@@ -2,7 +2,7 @@
 
 Mongoid Document Editor is Rails Engine that provides a DSL for setting up simple admin interfaces to edit MongoDB documents.  No configuration is required in order to get a basic form, however you can override any form you want to provide a more custom and usable interface.
 
-## Usage
+### Configuration
 Create an initializer and configure your admin interface.  
 
 ```ruby
@@ -27,6 +27,9 @@ Mongoid::DocumentEditor.configure do
 
 end
 ```
+
+### Usage
+In your application visit: **/documents/:class** (/documents/user)
 
 ### Options
 `authenticate_with`: Provide a controller filter for granting access  
