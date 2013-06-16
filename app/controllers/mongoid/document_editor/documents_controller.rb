@@ -6,17 +6,17 @@ module Mongoid
       layout "mongoid/document_editor/layouts/application"
 
       before_filter Mongoid::DocumentEditor.authentication_filter
+      before_filter :setup_klass
 
       def index
+        @documents = @klass.all
       end
 
       def edit
-        @klass    = params[:type].classify.constantize
         @document = @klass.find(params[:id])
       end
 
       def update
-        @klass    = params[:type].classify.constantize
         @document = @klass.find(params[:id])
         @document.update_attributes(document_params)
 
@@ -27,6 +27,10 @@ private
 
       def document_params
         params.require(params[:type].to_sym).permit!
+      end
+
+      def setup_klass
+        @klass = params[:type].classify.constantize
       end
 
     end

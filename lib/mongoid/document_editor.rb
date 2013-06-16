@@ -30,7 +30,11 @@ module Mongoid
     end
 
     def self.index_for(klass)
-      @@index_configuration[klass]
+      default_fields = {}
+      klass.fields.each_pair do |name, options|
+        default_fields[name.to_s] = {}
+      end
+      @@index_configuration.fetch(klass, default_fields)
     end
 
     def self.form_configuration_for(document_class, &block)
