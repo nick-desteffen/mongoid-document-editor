@@ -2,8 +2,11 @@
 <html>
   <head>
     <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag "base/style" %>
   </head>
   <body>
-    <%= yield %>
+    <div class="container content-inner">
+      <%= yield %>
+    </div>
   </body>
 </html>

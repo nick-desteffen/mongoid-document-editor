@@ -16,7 +16,7 @@ Mongoid::DocumentEditor.configure do
     field :favorite_color, values: User::COLORS
     field :email, type: :email
     field :home_city_id, values: -> { City.all }, label: :name, value: :id
-    field :visitied_city_ids: values: ->(user) { user.visited_cities.collect(&:id) }, label: :name, value: :id
+    field :visitied_city_ids: values: ->(user) { user.visited_cities }, label: :name, value: :id
   end
 
   index_configuration_for User do

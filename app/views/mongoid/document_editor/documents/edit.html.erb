@@ -1,6 +1,15 @@
+<div class="section header">
+  <div class="container clear">
+    <h1 class='logo'>Editing: <%= @document.id %></h1>
+  </div>
+</div>
+
 <%= simple_form_for @document, url: update_document_path(@klass.to_s.downcase, @document) do |f| %>
-  <% Mongoid::DocumentEditor.fields_for(@klass).each_pair do |name, config| %>
-    <p><%= document_edit_field(f, @klass, @document, name, config) %></p>
-  <% end %>
-  <%= f.submit %>
+  <fieldset class='row'>
+    <% Mongoid::DocumentEditor.fields_for(@klass).each_pair do |name, config| %>
+      <p><%= document_edit_field(f, @klass, @document, name, config) %></p>
+    <% end %>
+    <%= f.submit class: "button orange-button mobile-full" %>
+  </fieldset>
 <% end %>
+
