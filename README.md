@@ -36,6 +36,9 @@ In your application visit: **/documents/:class** (/documents/user)
 `form_configuration_for Class`: This allows you to specify the fields that you want on the form for the specified class  
 `index_configuration_for Class`: This allows you to specify the columns that are displayed on the index page
 
-## TODO
+### TODO
 
 * Rails generator
+
+
+Styled using [Base](http://matthewhartman.github.io/base/docs/index.html)
