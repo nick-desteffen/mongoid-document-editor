@@ -1,0 +1,18 @@
+<div class="section header">
+  <div class="container clear">
+    <h1 class='logo'>Viewing: <%= @document.id %></h1>
+  </div>
+</div>
+
+<% @klass.fields.each do |key, value| %>
+  <p><b><%= key %>:</b> <%= @document.send(key) %></p>
+<% end %>
+
+<hr>
+<h2>Relations:</h2>
+<% @klass.relations.each do |key, value| %>
+  <h3><%= key %></h3>
+  <% @document.send(key).each do |relation| %>
+    <p><%= link_to relation.send(:id), edit_document_path(value.class_name, relation.send(:id)) %></p>
+  <% end %>
+<% end %>

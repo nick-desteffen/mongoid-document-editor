@@ -8,9 +8,9 @@
   <thead>
       <tr>
         <% Mongoid::DocumentEditor.index_for(@klass).each_pair do |header, config| %>
-          <td><%= header.to_s.humanize %></td>
+          <th><%= header.to_s.humanize %></th>
         <% end %>
-          <td>Actions</td>
+          <th>Actions</th>
       </tr>
   </thead>
   <tbody>
@@ -19,7 +19,7 @@
         <% Mongoid::DocumentEditor.index_for(@klass).each_pair do |header, config| %>
           <td><%= document.send(header) %></td>
         <% end %>
-        <td><%= link_to "Edit", edit_document_path(@klass, document) %></td>
+        <td><%= link_to "Edit", edit_document_path(@klass, document) %> | <%= link_to "View", document_path(@klass, document) %></td>
       </tr>
     <% end %>
   </tbody>

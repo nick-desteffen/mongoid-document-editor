@@ -23,6 +23,10 @@ module Mongoid
         redirect_to edit_document_path(params[:type], @document.id)
       end
 
+      def show
+        @document = @klass.find(params[:id])
+      end
+
 private
 
       def document_params
