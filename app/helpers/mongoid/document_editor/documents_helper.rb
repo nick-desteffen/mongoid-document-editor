@@ -31,7 +31,15 @@ module Mongoid
         end
       end
 
-private
+      def cell_value(document, header, config)
+        if config[:value] && config[:value].respond_to?(:call)
+          config[:value].call(document)
+        else
+          document.send(header)
+        end
+      end
+
+    private
 
       def private_field?(name)
         return true if name.start_with?("_")
