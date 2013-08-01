@@ -19,7 +19,11 @@
         <% Mongoid::DocumentEditor.index_for(@klass).each_pair do |header, config| %>
           <td><%= document.send(header) %></td>
         <% end %>
-        <td><%= link_to "Edit", edit_document_path(@klass, document) %> | <%= link_to "View", document_path(@klass, document) %></td>
+        <td>
+          <%= link_to "View", document_path(@klass, document) %> |
+          <%= link_to "Edit", edit_document_path(@klass, document) %> |
+          <%= link_to "Destroy", destroy_document_path(@klass, document), method: :delete, data: {confirm: "Are you sure you want to destroy this record?"} %>
+        </td>
       </tr>
     <% end %>
   </tbody>

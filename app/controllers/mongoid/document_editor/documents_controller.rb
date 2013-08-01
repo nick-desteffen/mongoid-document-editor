@@ -1,12 +1,13 @@
 module Mongoid
   module DocumentEditor
     class DocumentsController < ApplicationController
-      include DocumentsHelper
 
       layout "mongoid/document_editor/layouts/application"
 
-      before_filter Mongoid::DocumentEditor.authentication_filter
-      before_filter :setup_klass
+      before_filter :setup_klass, except: [:all]
+
+      def all
+      end
 
       def index
         @documents = @klass.all
@@ -20,14 +21,21 @@ module Mongoid
         @document = @klass.find(params[:id])
         @document.update_attributes(document_params)
 
-        redirect_to edit_document_path(params[:type], @document.id)
+        redirect_to document_path(params[:type], @document.id)
       end
 
       def show
         @document = @klass.find(params[:id])
       end
 
-private
+      def destroy
+        @document = @klass.find(params[:id])
+        @document.destroy
+
+        redirect_to documents_path(params[:type])
+      end
+
+    private
 
       def document_params
         params.require(params[:type].to_sym).permit!
