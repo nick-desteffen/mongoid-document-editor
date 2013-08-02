@@ -20,9 +20,9 @@
           <td><%= cell_value(document, header, config) %></td>
         <% end %>
         <td>
-          <%= link_to "View", document_path(@klass, document) %> |
-          <%= link_to "Edit", edit_document_path(@klass, document) %> |
-          <%= link_to "Destroy", destroy_document_path(@klass, document), method: :delete, data: {confirm: "Are you sure you want to destroy this record?"} %>
+          <%= link_to "View", document_path(model_param(@klass), document) %> |
+          <%= link_to "Edit", edit_document_path(model_param(@klass), document) %> |
+          <%= link_to "Destroy", destroy_document_path(model_param(@klass), document), method: :delete, data: {confirm: "Are you sure you want to destroy this record?"} %>
         </td>
       </tr>
     <% end %>

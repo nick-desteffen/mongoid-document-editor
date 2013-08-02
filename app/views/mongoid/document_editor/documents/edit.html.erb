@@ -4,12 +4,12 @@
   </div>
 </div>
 
-<%= simple_form_for @document, url: update_document_path(@klass.to_s.underscore.downcase, @document) do |f| %>
+<%= simple_form_for @document, url: update_document_path(model_param(@klass), @document) do |f| %>
   <fieldset class='row'>
     <% Mongoid::DocumentEditor.fields_for(@klass).each_pair do |name, config| %>
       <p><%= document_edit_field(f, @klass, @document, name, config) %></p>
     <% end %>
-    <%= link_to "Cancel", document_path(@klass.to_s.downcase, @document), class: "button orange-button mobile-full" %>
+    <%= link_to "Cancel", document_path(model_param(@klass), @document), class: "button orange-button mobile-full" %>
     <%= f.submit class: "button orange-button mobile-full" %>
   </fieldset>
 <% end %>

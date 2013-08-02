@@ -10,7 +10,7 @@ Mongoid::DocumentEditor.configure do
 
   authenticate_with :admin_required
   
-  mount_at "/admin/documents" ## Default is: /documents
+  mount_at "/admin/documents"
 
   form_configuration_for User do
   	field :first_name
@@ -38,6 +38,7 @@ In your application visit: **/documents**
 `authenticate_with`: Provide a controller filter for granting / denying access  
 `form_configuration_for Class`: Allows you to specify the fields that you want on the form for the specified class  
 `index_configuration_for Class`: Allows you to specify the columns that are displayed on the index page
+`mount_at`: Endpoint where editor is mounted (default is **/documents**)
 
 ### Notes
 In development mode set `preload_models: true`

@@ -3,7 +3,7 @@
     <h1 class='logo'>Viewing: <%= @document.id %></h1>
   </div>
 </div>
-<h3><%= link_to "Edit", edit_document_path(@klass, @document.id) %></h3>
+<h3><%= link_to "Edit", edit_document_path(model_param(@klass), @document.id) %></h3>
 
 <% @klass.fields.each do |key, value| %>
   <p><b><%= key %>:</b> <%= @document.send(key) %></p>
@@ -15,11 +15,11 @@
   <h3><%= key %></h3>
   <% if [:has_many, :has_and_belongs_to_many].include?(@document.relations[key].macro) %>
     <% @document.send(key).each do |relation| %>
-      <p><%= link_to relation.send(:id), document_path(value.class_name, relation.send(:id)) %></p>
+      <p><%= link_to relation.send(:id), document_path(model_param(value.class_name), relation.send(:id)) %></p>
     <% end %>
   <% elsif [:has_one, :belongs_to].include?(@document.relations[key].macro) %>
     <% if relation = @document.send(key) %>
-      <p><%= link_to relation.send(:id), document_path(value.class_name, relation.send(:id)) %></p>
+      <p><%= link_to relation.send(:id), document_path(model_param(value.class_name), relation.send(:id)) %></p>
     <% end %>
   <% end %>
 <% end %>

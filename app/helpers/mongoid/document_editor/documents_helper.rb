@@ -39,6 +39,10 @@ module Mongoid
         end
       end
 
+      def model_param(model)
+        model.to_s.underscore.downcase
+      end
+
     private
 
       def private_field?(name)
