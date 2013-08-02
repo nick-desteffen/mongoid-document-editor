@@ -9,10 +9,12 @@ Create an initializer and configure your admin interface.
 Mongoid::DocumentEditor.configure do
 
   authenticate_with :admin_required
+  
+  mount_at "/admin/documents" ## Default is: /documents
 
   form_configuration_for User do
-  	field :name
-    field :email
+  	field :first_name
+    field :last_name
     field :favorite_color, values: User::COLORS
     field :email, type: :email
     field :home_city_id, values: -> { City.all }, label: :name, value: :id
@@ -20,9 +22,10 @@ Mongoid::DocumentEditor.configure do
   end
 
   index_configuration_for User do
-    column :name
+    column :first_name
+    column :last_Name
     column :email
-    column :city
+    column :city, value: ->(user) { user.city.name }
   end
 
 end
@@ -38,9 +41,9 @@ In your application visit: **/documents**
 
 ### Notes
 In development mode set `preload_models: true`
+
 ### TODO
 
-* Customize endpoint (/documents)
 * Rails generator
 * Remove simple_form dependency
 

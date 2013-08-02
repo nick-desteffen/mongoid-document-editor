@@ -17,6 +17,9 @@ module Mongoid
     mattr_accessor :authentication_filter
     @@authentication_filter = nil
 
+    mattr_accessor :endpoint
+    @@endpoint = "/documents"
+
     def self.configure(&block)
       instance_eval(&block)
     end
@@ -51,6 +54,10 @@ module Mongoid
 
     def self.authenticate_with(filter)
       @@authentication_filter = filter
+    end
+
+    def self.mount_at(endpoint)
+      @@endpoint = endpoint
     end
 
   end
