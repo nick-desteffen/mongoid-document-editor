@@ -3,6 +3,10 @@ module Mongoid
     class Engine < ::Rails::Engine
       isolate_namespace Mongoid::DocumentEditor
 
+      initializer "mongoid-document-editor.assets.precompile" do |app|
+        app.config.assets.precompile += ["base/style.css", "jquery.js", "jquery_ujs.js"]
+      end
+
       config.after_initialize do |app|
         app.routes.prepend do
           mount Mongoid::DocumentEditor::Engine => Mongoid::DocumentEditor.endpoint
