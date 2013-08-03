@@ -35,6 +35,7 @@ module Mongoid
     def self.index_for(klass)
       default_fields = {}
       klass.fields.each_pair do |name, options|
+        next if name.start_with?("_")
         default_fields[name.to_s] = {}
       end
       @@index_configuration.fetch(klass, default_fields)

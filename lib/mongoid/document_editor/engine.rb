@@ -4,7 +4,7 @@ module Mongoid
       isolate_namespace Mongoid::DocumentEditor
 
       initializer "mongoid-document-editor.assets.precompile" do |app|
-        app.config.assets.precompile += ["base/style.css", "jquery.js", "jquery_ujs.js"]
+        app.config.assets.precompile += ["base/style.css", "base/doc.css", "jquery.js", "jquery_ujs.js"]
       end
 
       config.after_initialize do |app|
