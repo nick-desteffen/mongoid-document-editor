@@ -20,6 +20,9 @@ module Mongoid
     mattr_accessor :endpoint
     @@endpoint = "/documents"
 
+    mattr_accessor :models
+    @@models = Mongoid.models
+
     def self.configure(&block)
       instance_eval(&block)
     end
@@ -59,6 +62,17 @@ module Mongoid
 
     def self.mount_at(endpoint)
       @@endpoint = endpoint
+    end
+
+    def self.resources(options={})
+      ::Rails::Mongoid.load_models(Rails.application)
+      if options[:include]
+        @@models = Mongoid.models.select{ |model| Array(options[:include]).include?(model.to_s.underscore.downcase.to_sym) }
+      elsif options[:exclude]
+        @@models = Mongoid.models.reject{ |model| Array(options[:exclude]).include?(model.to_s.underscore.downcase.to_sym) }
+      else
+        @@models = Mongoid.models
+      end
     end
 
   end

@@ -1,3 +1,3 @@
-<% Mongoid.models.each do |model| %>
+<% Mongoid::DocumentEditor.models.each do |model| %>
   <p><%= link_to model_param(model), documents_path(model_param(model)) %></p>
 <% end %>
