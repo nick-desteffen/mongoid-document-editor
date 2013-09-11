@@ -4,6 +4,7 @@ module Mongoid
       isolate_namespace Mongoid::DocumentEditor
 
       initializer :assets, group: :all do |app|
+        app.config.assets.paths.push(File.join(app.root, 'vendor/assets/stylesheets'))
         app.config.assets.precompile += ["base/style.css", "base/doc.css", "jquery.js", "jquery_ujs.js"]
       end
 
