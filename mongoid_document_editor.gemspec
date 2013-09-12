@@ -16,6 +16,7 @@ Gem::Specification.new do |spec|
   spec.files         =  Dir.glob("lib/**/*")
   spec.files         += Dir.glob("app/**/*")
   spec.files         += Dir.glob("config/**/*")
+  spec.files         += Dir.glob("vendor/**/*")
   spec.files         += %w(README.md LICENSE.txt mongoid_document_editor.gemspec)
 
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
