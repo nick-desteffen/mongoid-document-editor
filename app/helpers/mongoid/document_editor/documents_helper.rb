@@ -43,6 +43,14 @@ module Mongoid
         model.to_s.underscore.downcase
       end
 
+      def relation_label(relation)
+        if relation.respond_to?(:slug)
+          return relation.slug
+        else
+          return relation.id
+        end
+      end
+
     private
 
       def private_field?(name)
