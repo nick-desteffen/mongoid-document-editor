@@ -50,10 +50,4 @@ In your application visit: **/documents**
 ### Notes
 In development mode set `preload_models: true`
 
-### TODO
-
-* Rails generator
-* Remove simple_form dependency
-
-
 Styled using [Base](http://matthewhartman.github.io/base/docs/index.html)

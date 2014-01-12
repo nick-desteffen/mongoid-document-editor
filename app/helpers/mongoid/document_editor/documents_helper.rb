@@ -6,6 +6,7 @@ module Mongoid
         name = name.to_s
         return nil if private_field?(name)
 
+        ## Fetch collection values
         values = config.fetch(:values, nil)
         if values.respond_to?(:call) && values.arity == 1
           values = values.call(document)
@@ -13,22 +14,39 @@ module Mongoid
           values = values.call
         end
 
-        label   = config.fetch(:label, :name)
-        value   = config.fetch(:value, :id)
-        type    = config.fetch(:type, nil)
-        options = {}
-        options = {as: :boolean} if klass.fields[name].type == Boolean
-        options = {as: :numeric} if klass.fields[name].type == Integer
-        options = {as: :text}    if type == :text
-        options = {collection: values} if values.present?
+        ## Setup label and value
+        label_method = config.fetch(:label, :name)
+        value_method = config.fetch(:value, :id)
+        type         = config.fetch(:type, nil)
 
-        options.merge!(label_method: label, value_method: value) if config[:label] && config[:value]
+        label = form.label(name, class: "stacked")
 
-        if klass.fields[name].type == Array && values
-          return form.collection_check_boxes(name, values, value, label)
+        if klass.fields[name].type == Boolean
+          form_field = form.check_box(name)
+        elsif klass.fields[name].type == Integer
+          form_field = form.number_field(name)
+        elsif type == :textarea
+          form_field = form.text_area(name)
+        elsif (name =~ /email/) || (type == :email)
+          form_field = form.email_field(name)
+        elsif klass.fields[name].type == Array && values && values.is_a?(Mongoid::Criteria)
+          form_field = values.each_with_index.map do |record, index|
+            class_name = model_param(record.name)
+            id_value = "#{class_name}_#{index}"
+            label_tag(record.send(label_method), nil, for: id_value, class: "stacked") do
+              check_box_tag("#{model_param(klass)}[#{name}][]", record.send(value_method), document.send(name).include?(record.send(value_method)), id: id_value) +
+              content_tag(:span, record.send(label_method))
+            end
+          end.join("").html_safe
+        elsif values && values.is_a?(Mongoid::Criteria)
+          form_field = form.collection_select(name, values, value_method, label_method)
+        elsif values
+          form_field = form.select(name, values)
         else
-          return form.input(name, options)
+          form_field = form.text_field(name)
         end
+
+        return (label + form_field).html_safe
       end
 
       def cell_value(document, header, config)
