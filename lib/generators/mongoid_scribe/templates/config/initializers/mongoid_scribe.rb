@@ -1,4 +1,4 @@
-Mongoid::DocumentEditor.configure do
+Mongoid::Scribe.configure do
 
 ##  authenticate_with :admin_required
 

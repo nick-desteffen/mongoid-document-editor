@@ -7,7 +7,7 @@
 <table>
   <thead>
       <tr>
-        <% Mongoid::DocumentEditor.index_for(@klass).each_pair do |header, config| %>
+        <% Mongoid::Scribe.index_for(@klass).each_pair do |header, config| %>
           <th><%= header.to_s.humanize %></th>
         <% end %>
           <th>Actions</th>
@@ -16,7 +16,7 @@
   <tbody>
     <% @documents.each do |document| %>
       <tr>
-        <% Mongoid::DocumentEditor.index_for(@klass).each_pair do |header, config| %>
+        <% Mongoid::Scribe.index_for(@klass).each_pair do |header, config| %>
           <td><%= cell_value(document, header, config) %></td>
         <% end %>
         <td>

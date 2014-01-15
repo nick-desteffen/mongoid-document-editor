@@ -1,8 +1,8 @@
 module Mongoid
-  module DocumentEditor
+  module Scribe
     class DocumentsController < ApplicationController
 
-      layout "mongoid/document_editor/layouts/application"
+      layout "mongoid/scribe/layouts/application"
 
       before_filter :setup_klass, except: [:all]
 

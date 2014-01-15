@@ -1,5 +1,5 @@
 module Mongoid
-  module DocumentEditor
+  module Scribe
 
     class FormConfiguration < Configuration
       def field(name, options={})

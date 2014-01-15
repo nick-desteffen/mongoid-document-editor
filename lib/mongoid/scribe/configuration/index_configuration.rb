@@ -1,5 +1,5 @@
 module Mongoid
-  module DocumentEditor
+  module Scribe
 
     class IndexConfiguration < Configuration
       def column(name, options={})

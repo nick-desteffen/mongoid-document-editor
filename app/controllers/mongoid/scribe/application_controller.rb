@@ -1,9 +1,9 @@
 module Mongoid
-  module DocumentEditor
+  module Scribe
     class ApplicationController < ::ApplicationController
       include DocumentsHelper
 
-      before_filter Mongoid::DocumentEditor.authentication_filter
+      before_filter Mongoid::Scribe.authentication_filter
 
     end
   end

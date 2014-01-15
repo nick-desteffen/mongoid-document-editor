@@ -1,5 +1,5 @@
 module Mongoid
-  module DocumentEditor
+  module Scribe
     class Configuration
 
       def initialize(document_class, configuration, &block)

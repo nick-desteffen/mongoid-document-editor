@@ -1,5 +1,5 @@
 module Mongoid
-  module DocumentEditor
+  module Scribe
     module DocumentsHelper
 
       def document_edit_field(form, klass, document, name, config)

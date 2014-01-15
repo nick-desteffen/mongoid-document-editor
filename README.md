@@ -1,6 +1,6 @@
-# Mongoid Document Editor
+# Mongoid Scribe
 
-Mongoid Document Editor is a Rails Engine that provides a DSL for setting up simple admin interfaces to edit MongoDB documents.  No configuration is required in order to get a basic form, however you can override any form you want to provide a more custom and usable interface.
+Mongoid Scribe is a Rails Engine that provides a DSL for setting up simple admin interfaces to edit MongoDB documents.  No configuration is required in order to get a basic form, however you can override any form you want to provide a more custom and usable interface.
 
 ### Generator
 To generate an initializer:  
@@ -10,7 +10,7 @@ To generate an initializer:
 ### Configuration
 
 ```ruby
-Mongoid::DocumentEditor.configure do
+Mongoid::Scribe.configure do
 
   authenticate_with :admin_required
   

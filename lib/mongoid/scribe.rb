@@ -1,11 +1,11 @@
-require "mongoid/document_editor/version"
-require "mongoid/document_editor/engine"
-require "mongoid/document_editor/configuration"
-require "mongoid/document_editor/configuration/form_configuration"
-require "mongoid/document_editor/configuration/index_configuration"
+require "mongoid/scribe/version"
+require "mongoid/scribe/engine"
+require "mongoid/scribe/configuration"
+require "mongoid/scribe/configuration/form_configuration"
+require "mongoid/scribe/configuration/index_configuration"
 
 module Mongoid
-  module DocumentEditor
+  module Scribe
     extend ActiveSupport::Autoload
 
     mattr_accessor :form_configuration

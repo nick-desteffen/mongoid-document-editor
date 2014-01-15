@@ -6,7 +6,7 @@
 
 <%= form_for @document, url: update_document_path(model_param(@klass), @document) do |form| %>
   <fieldset class='row'>
-    <% Mongoid::DocumentEditor.fields_for(@klass).each_pair do |name, config| %>
+    <% Mongoid::Scribe.fields_for(@klass).each_pair do |name, config| %>
       <p><%= document_edit_field(form, @klass, @document, name, config) %></p>
     <% end %>
     <%= link_to("Cancel", document_path(model_param(@klass), @document), class: "button orange-button mobile-full") %>

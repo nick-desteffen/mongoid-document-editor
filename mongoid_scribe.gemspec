@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'mongoid/document_editor/version'
+require 'mongoid/scribe/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "mongoid_document_editor"
-  spec.version       = Mongoid::DocumentEditor::VERSION
+  spec.name          = "mongoid_scribe"
+  spec.version       = Mongoid::Scribe::VERSION
   spec.authors       = ["Nick DeSteffen"]
   spec.email         = ["nick.desteffen@gmail.com"]
   spec.description   = %q{Write a gem description}
@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
   spec.files         += Dir.glob("app/**/*")
   spec.files         += Dir.glob("config/**/*")
   spec.files         += Dir.glob("vendor/**/*")
-  spec.files         += %w(README.md LICENSE.txt mongoid_document_editor.gemspec)
+  spec.files         += %w(README.md LICENSE.txt mongoid_scribe.gemspec)
 
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]

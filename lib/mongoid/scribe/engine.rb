@@ -1,7 +1,7 @@
 module Mongoid
-  module DocumentEditor
+  module Scribe
     class Engine < ::Rails::Engine
-      isolate_namespace Mongoid::DocumentEditor
+      isolate_namespace Mongoid::Scribe
 
       initializer :assets, group: :all do |app|
         app.config.assets.precompile += ["base/style.css", "base/doc.css", "base/custom.css", "jquery.js", "jquery_ujs.js"]
@@ -9,7 +9,7 @@ module Mongoid
 
       config.after_initialize do |app|
         app.routes.prepend do
-          mount Mongoid::DocumentEditor::Engine => Mongoid::DocumentEditor.endpoint
+          mount Mongoid::Scribe::Engine => Mongoid::Scribe.endpoint
         end
       end
 

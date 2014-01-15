@@ -1,4 +1,4 @@
-Mongoid::DocumentEditor::Engine.routes.draw do
+Mongoid::Scribe::Engine.routes.draw do
 
   get "/",               to: "documents#all", as: :document_listing
   get "/:type/:id/edit", to: "documents#edit", as: :edit_document

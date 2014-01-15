@@ -1,14 +1,14 @@
 require 'rails/generators'
 
-module MongoidDocumentEditor
+module MongoidScribe
   module Generators
     class InstallGenerator < ::Rails::Generators::Base
       source_root File.expand_path('../templates', __FILE__)
 
-      desc "Generate Mongoid Document Editor Initializer"
+      desc "Generate Mongoid Scribe Initializer"
 
       def generate_initializer
-        copy_file "config/initializers/mongoid_document_editor.rb", "config/initializers/mongoid_document_editor.rb"
+        copy_file "config/initializers/mongoid_scribe.rb", "config/initializers/mongoid_scribe.rb"
       end
 
     end
