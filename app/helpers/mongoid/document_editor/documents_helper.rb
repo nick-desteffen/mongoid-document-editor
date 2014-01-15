@@ -12,6 +12,8 @@ module Mongoid
           values = values.call(document)
         elsif values.respond_to?(:call)
           values = values.call
+        elsif class_name = document.relations.values.detect{ |data| data.key == name }.try(:class_name)
+          values = class_name.constantize.all
         end
 
         ## Setup label and value
