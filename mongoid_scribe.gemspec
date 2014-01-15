@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["nick.desteffen@gmail.com"]
   spec.description   = %q{Write a gem description}
   spec.summary       = %q{Write a gem summary}
-  spec.homepage      = "https://github.com/nick-desteffen/mongoid-document-editor"
+  spec.homepage      = "https://github.com/nick-desteffen/mongoid-scribe"
   spec.license       = "MIT"
 
   spec.files         =  Dir.glob("lib/**/*")

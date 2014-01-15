@@ -5,7 +5,7 @@ Mongoid Scribe is a Rails Engine that provides a DSL for setting up simple admin
 ### Generator
 To generate an initializer:  
 
-`bundle exec rails generate mongoid_document_editor:install`
+`bundle exec rails generate mongoid_scribe:install`
 
 ### Configuration
 
