@@ -17,7 +17,7 @@
     <% @documents.each do |document| %>
       <tr>
         <% Mongoid::Scribe.index_for(@klass).each_pair do |header, config| %>
-          <td><%= cell_value(document, header, config) %></td>
+          <td><%= Mongoid::Scribe::TableBuilder.new(document, header, config).cell %></td>
         <% end %>
         <td>
           <%= link_to "View", document_path(model_param(@klass), document) %> |

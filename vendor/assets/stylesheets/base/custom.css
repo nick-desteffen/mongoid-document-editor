@@ -5,3 +5,7 @@ label.stacked{
 label span{
   padding-left: 5px;
 }
+
+.control-group{
+  margin: 10px 0;
+}
