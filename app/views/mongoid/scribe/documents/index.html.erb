@@ -1,3 +1,7 @@
+<% content_for :navigation do %>
+  <%= link_to "All Documents", document_listing_path, class: "button orange-button mobile-full" %>
+<% end %>
+
 <div class="section header">
   <div class="container clear">
     <h1 class='logo'><%= @klass.name.pluralize %></h1>
@@ -6,18 +10,18 @@
 
 <table>
   <thead>
-      <tr>
-        <% Mongoid::Scribe.index_for(@klass).each_pair do |header, config| %>
-          <th><%= header.to_s.humanize %></th>
-        <% end %>
-          <th>Actions</th>
-      </tr>
+    <tr>
+      <% Mongoid::Scribe.index_for(@klass).each_pair do |header, config| %>
+        <th><%= header.to_s.humanize %></th>
+      <% end %>
+      <th>Actions</th>
+    </tr>
   </thead>
   <tbody>
     <% @documents.each do |document| %>
       <tr>
         <% Mongoid::Scribe.index_for(@klass).each_pair do |header, config| %>
-          <td><%= Mongoid::Scribe::TableBuilder.new(document, header, config).cell %></td>
+          <td><%= Mongoid::Scribe::Builders::Table.new(document, header, config).cell %></td>
         <% end %>
         <td>
           <%= link_to "View", document_path(model_param(@klass), document) %> |

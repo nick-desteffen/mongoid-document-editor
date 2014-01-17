@@ -1,11 +1,22 @@
 label.stacked{
   display: block;
+  margin-bottom: 3px;
+  font-weight: bold;
 }
 
 label span{
   padding-left: 5px;
+  font-weight: normal;
 }
 
 .control-group{
   margin: 10px 0;
+}
+
+.container table{
+  margin: 10px 0;
+}
+
+.container table td.key{
+  font-weight: bold;
 }

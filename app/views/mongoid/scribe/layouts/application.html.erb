@@ -6,7 +6,7 @@
   </head>
   <body>
     <div class="container content-inner">
-      <%= link_to "All Documents", document_listing_path %>
+      <%= yield :navigation %>
       <%= yield %>
     </div>
     <%= javascript_include_tag "jquery", "jquery_ujs" %>

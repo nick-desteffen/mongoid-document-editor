@@ -3,8 +3,8 @@ require "mongoid/scribe/engine"
 require "mongoid/scribe/configuration"
 require "mongoid/scribe/configuration/form_configuration"
 require "mongoid/scribe/configuration/index_configuration"
-require "mongoid/scribe/field_builder"
-require "mongoid/scribe/table_builder"
+require "mongoid/scribe/builders/field"
+require "mongoid/scribe/builders/table"
 
 module Mongoid
   module Scribe

@@ -1,3 +1,22 @@
-<% Mongoid::Scribe.models.each do |model| %>
-  <p><%= link_to model_param(model), documents_path(model_param(model)) %></p>
-<% end %>
+<div class="section header">
+  <div class="container clear">
+    <h1 class='logo'>All Documents</h1>
+  </div>
+</div>
+
+<table>
+  <thead>
+      <tr>
+        <th>Type</th>
+        <th>Count</th>
+      </tr>
+  </thead>
+  <tbody>
+    <% Mongoid::Scribe.models.each do |model| %>
+      <tr>
+        <td><%= link_to model_param(model), documents_path(model_param(model)) %></td>
+        <td><%= model.count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
