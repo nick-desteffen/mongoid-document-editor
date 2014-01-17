@@ -5,6 +5,7 @@ require "mongoid/scribe/configuration/form_configuration"
 require "mongoid/scribe/configuration/index_configuration"
 require "mongoid/scribe/builders/field"
 require "mongoid/scribe/builders/table"
+require "mongoid/scribe/builders/relation"
 
 module Mongoid
   module Scribe

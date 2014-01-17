@@ -11,24 +11,15 @@
 <%= link_to "Edit", edit_document_path(model_param(@klass), @document.id), class: "button orange-button mobile-full" %>
 
 <table>
-  <% @klass.fields.each do |key, value| %>
+  <% @klass.fields.each do |attribute, meta| %>
     <tr>
-      <td class='key'><%= key %></td>
-      <td><%= @document.send(key) %></td>
+      <td class='key'><%= attribute %></td>
+      <td><%= @document.send(attribute) %></td>
     </tr>
   <% end %>
 </table>
 
-<h2>Relations:</h2>
-<% @klass.relations.each do |key, value| %>
-  <h3><%= key %></h3>
-  <% if [:has_many, :has_and_belongs_to_many].include?(@document.relations[key].macro) %>
-    <% @document.send(key).asc(:created_at).each do |relation| %>
-      <p><%= link_to relation_label(relation), document_path(model_param(relation.class.name), relation.send(:id)) %></p>
-    <% end %>
-  <% elsif [:has_one, :belongs_to].include?(@document.relations[key].macro) %>
-    <% if relation = @document.send(key) %>
-      <p><%= link_to relation_label(relation), document_path(model_param(relation.class.name), relation.send(:id)) %></p>
-    <% end %>
-  <% end %>
+<h3>Relations:</h3>
+<% @klass.relations.each do |relation, meta| %>
+  <%= Mongoid::Scribe::Builders::Relation.new(@document, relation).listing %>
 <% end %>

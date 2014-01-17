@@ -16,7 +16,7 @@
       <%= Mongoid::Scribe::Builders::Field.new(form, @klass, @document, name, config).field %>
     <% end %>
     <%= link_to("Cancel", document_path(model_param(@klass), @document), class: "button orange-button mobile-full") %>
-    <%= form.submit(class: "button orange-button mobile-full") %>
+    <%= form.submit("Update #{@klass}", class: "button orange-button mobile-full") %>
   </fieldset>
 <% end %>
 
