@@ -11,7 +11,7 @@ module Mongoid
           @document     = document
           @name         = name.to_s
           @config       = config
-          @label_method = @config.fetch(:label, :name)
+          @label_method = @config.fetch(:label, :id)
           @value_method = @config.fetch(:value, :id)
           @type         = @config.fetch(:type, nil)
         end
@@ -27,7 +27,7 @@ module Mongoid
             form_field = @form.text_area(@name)
           elsif (@name =~ /email/) || (@type == :email)
             form_field = @form.email_field(@name)
-          elsif @klass.fields[@name].type == Array && values && values.is_a?(Mongoid::Criteria)
+          elsif @klass.fields[@name].type == Array && values
             form_field = checkbox_array
           elsif values && values.is_a?(Mongoid::Criteria)
             form_field = @form.collection_select(@name, values, @value_method, @label_method)
