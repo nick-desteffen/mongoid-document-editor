@@ -10,7 +10,7 @@ module Mongoid
       end
 
       def index
-        @documents = @klass.all
+        @documents = @klass.all.asc(:created_at)
       end
 
       def edit
