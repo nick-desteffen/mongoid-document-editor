@@ -18,7 +18,7 @@ module Mongoid
     @@index_configuration = {}
 
     mattr_accessor :authentication_filter
-    @@authentication_filter = nil
+    @@authentication_filter = ->() { return true }
 
     mattr_accessor :endpoint
     @@endpoint = "/documents"
