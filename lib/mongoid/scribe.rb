@@ -1,3 +1,5 @@
+require "rails"
+require "mongoid"
 require "mongoid/scribe/version"
 require "mongoid/scribe/engine"
 require "mongoid/scribe/configuration"
