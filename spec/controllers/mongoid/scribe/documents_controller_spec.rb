@@ -5,6 +5,7 @@ describe Mongoid::Scribe::DocumentsController do
   routes { Mongoid::Scribe::Engine.routes }
 
   let!(:user) { FactoryGirl.create(:user) }
+  let!(:address) { FactoryGirl.create(:address, user: user) }
 
   describe "all" do
     it "renders successfully" do
@@ -31,6 +32,7 @@ describe Mongoid::Scribe::DocumentsController do
       expect(response).to be_success
       expect(assigns(:klass)).to eq(User)
       expect(assigns(:document)).to eq(user)
+      expect(response.body).to match /#{address.id}/
     end
   end
 

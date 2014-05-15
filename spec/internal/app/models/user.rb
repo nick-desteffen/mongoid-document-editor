@@ -6,4 +6,6 @@ class User
   field :last_name,  type: String
   field :email,      type: String
 
+  has_many :addresses
+
 end

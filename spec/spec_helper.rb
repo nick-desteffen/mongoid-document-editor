@@ -33,4 +33,11 @@ FactoryGirl.define do
     last_name "Doe"
     sequence(:email) { |n| "user#{n}@example.com" }
   end
+  factory :address do
+    user
+    street "1600 Pennsylvania Ave NW"
+    city "Washington"
+    state "DC"
+    zip_code "20500"
+  end
 end
