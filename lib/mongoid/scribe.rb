@@ -1,4 +1,5 @@
 require "rails"
+require "strong_parameters"
 require "mongoid"
 require "mongoid/scribe/version"
 require "mongoid/scribe/engine"

@@ -4,6 +4,8 @@ describe Mongoid::Scribe::DocumentsController do
 
   routes { Mongoid::Scribe::Engine.routes }
 
+  let!(:user) { FactoryGirl.create(:user) }
+
   describe "all" do
     it "renders successfully" do
       get :all
@@ -17,32 +19,46 @@ describe Mongoid::Scribe::DocumentsController do
       get :index, type: "user"
 
       expect(response).to be_success
+      expect(assigns(:klass)).to eq(User)
+      expect(assigns(:documents)).to include(user)
     end
   end
 
   describe "show" do
-    it "does something" do
+    it "displays a record" do
+      get :show, type: "user", id: user.id
+
+      expect(response).to be_success
+      expect(assigns(:klass)).to eq(User)
+      expect(assigns(:document)).to eq(user)
     end
   end
 
   describe "edit" do
-    it "does something" do
+    it "displays a record to edit" do
+      get :edit, type: "user", id: user.id
+
+      expect(response).to be_success
+      expect(assigns(:klass)).to eq(User)
+      expect(assigns(:document)).to eq(user)
     end
   end
 
   describe "update" do
-    it "does something" do
-    end
-  end
+    it "updates a record" do
+      put :update, type: "user", id: user.id, user: {first_name: "First", last_name: "Last", email: "user@example.com"}
 
-  describe "create" do
-    it "does something" do
-
+      expect(response).to redirect_to(document_path("user", user.id))
+      expect(user.reload.email).to eq("user@example.com")
     end
   end
 
   describe "destroy" do
-    it "does something" do
+    it "deletes a record" do
+      expect{
+        delete :destroy, type: "user", id: user.id
+      }.to change(User, :count).by(-1)
+      expect(response).to redirect_to documents_path("user")
     end
   end
 

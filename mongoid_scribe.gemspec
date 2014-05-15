@@ -32,4 +32,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec-rails", "~> 2.14.2"
   spec.add_development_dependency "combustion", "~> 0.5.1"
   spec.add_development_dependency "pry", "~> 0.9.12.6"
+  spec.add_development_dependency "factory_girl_rails", "~> 4.4.0"
+  spec.add_development_dependency "database_cleaner", "~> 1.2.0"
 end

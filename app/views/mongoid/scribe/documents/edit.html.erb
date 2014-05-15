@@ -1,7 +1,7 @@
 <% content_for :navigation do %>
-    <%= link_to "All Documents", document_listing_path, class: "button orange-button mobile-full" %>
-    <%= link_to @klass.to_s.pluralize, documents_path(model_param(@klass)), class: "button orange-button mobile-full" %>
-    <%= link_to @document.id, document_path(model_param(@klass), @document.id), class: "button orange-button mobile-full" %>
+  <%= link_to "All Documents", document_listing_path, class: "button orange-button mobile-full" %>
+  <%= link_to @klass.to_s.pluralize, documents_path(model_param(@klass)), class: "button orange-button mobile-full" %>
+  <%= link_to @document.id, document_path(model_param(@klass), @document.id), class: "button orange-button mobile-full" %>
 <% end %>
 
 <div class="section header">
