@@ -31,6 +31,7 @@ FactoryGirl.define do
   factory :user do
     first_name "Jon"
     last_name "Doe"
+    slug "john-doe"
     sequence(:email) { |n| "user#{n}@example.com" }
   end
   factory :address do
