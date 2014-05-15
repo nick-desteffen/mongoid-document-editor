@@ -1,6 +1,7 @@
 # Mongoid Scribe
 
 [![Build Status](https://travis-ci.org/nick-desteffen/mongoid-scribe.svg?branch=master)](https://travis-ci.org/nick-desteffen/mongoid-scribe)
+[![Code Climate](https://codeclimate.com/github/nick-desteffen/mongoid-scribe.png)](https://codeclimate.com/github/nick-desteffen/mongoid-scribe)
 
 Mongoid Scribe is a Rails Engine that provides a DSL for setting up simple admin interfaces to edit MongoDB documents.  No configuration is required in order to get a basic form, however you can override any form you want to provide a more custom and usable interface.
 
