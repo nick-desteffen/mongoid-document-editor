@@ -3,7 +3,9 @@ module Mongoid
     class ApplicationController < ::ApplicationController
       include DocumentsHelper
 
-      before_filter Mongoid::Scribe.authentication_filter
+      if Mongoid::Scribe.authentication_filter
+        before_filter Mongoid::Scribe.authentication_filter
+      end
 
     end
   end

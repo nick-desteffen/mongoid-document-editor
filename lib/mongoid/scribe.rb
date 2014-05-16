@@ -14,6 +14,9 @@ module Mongoid
   module Scribe
     extend ActiveSupport::Autoload
 
+    DEFAULT_ENDPOINT = "/documents"
+    DEFAULT_AUTHENTICATION_FILTER = nil
+
     mattr_accessor :form_configuration
     @@form_configuration  = {}
 
@@ -21,10 +24,10 @@ module Mongoid
     @@index_configuration = {}
 
     mattr_accessor :authentication_filter
-    @@authentication_filter = ->() { return true }
+    @@authentication_filter = DEFAULT_AUTHENTICATION_FILTER
 
     mattr_accessor :endpoint
-    @@endpoint = "/documents"
+    @@endpoint = DEFAULT_ENDPOINT
 
     mattr_accessor :models
     @@models = Mongoid.models

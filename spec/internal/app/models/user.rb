@@ -6,6 +6,7 @@ class User
   field :last_name,  type: String
   field :email,      type: String
   field :slug,       type: String
+  field :admin,      type: Boolean
 
   has_many :addresses
 

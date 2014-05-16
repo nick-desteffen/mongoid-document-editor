@@ -32,6 +32,7 @@ FactoryGirl.define do
     first_name "Jon"
     last_name "Doe"
     slug "john-doe"
+    admin false
     sequence(:email) { |n| "user#{n}@example.com" }
   end
   factory :address do
