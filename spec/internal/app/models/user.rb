@@ -7,7 +7,9 @@ class User
   field :email,      type: String
   field :slug,       type: String
   field :admin,      type: Boolean
+  field :color,      type: String
 
   has_many :addresses
+  belongs_to  :primary_address, class_name: "Address"
 
 end
