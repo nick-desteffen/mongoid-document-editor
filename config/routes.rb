@@ -1,10 +1,15 @@
 Mongoid::Scribe::Engine.routes.draw do
 
-  get "/",               to: "documents#all",     as: :document_listing
-  get "/:type/:id/edit", to: "documents#edit",    as: :edit_document
-  get "/:type/:id",      to: "documents#show",    as: :document
-  put "/:type/:id/edit", to: "documents#update",  as: :update_document
-  get "/:type",          to: "documents#index",   as: :documents
-  delete "/:type/:id",   to: "documents#destroy", as: :destroy_document
+  scope("/:type/") do
+    get    "new",      to: "documents#new",     as: :new_document
+    post   "new",      to: "documents#create",  as: :create_document
+    get    ":id/edit", to: "documents#edit",    as: :edit_document
+    get    ":id",      to: "documents#show",    as: :document
+    put    ":id/edit", to: "documents#update",  as: :update_document
+    get    "",         to: "documents#index",   as: :documents
+    delete ":id",      to: "documents#destroy", as: :destroy_document
+  end
+
+  root to: "documents#all"
 
 end

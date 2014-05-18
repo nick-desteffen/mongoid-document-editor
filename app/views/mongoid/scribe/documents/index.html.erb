@@ -1,5 +1,6 @@
 <% content_for :navigation do %>
-  <%= link_to "All Documents", document_listing_path, class: "button orange-button mobile-full" %>
+  <%= link_to "All Documents", root_path, class: "button orange-button mobile-full" %>
+  <%= link_to "New #{@klass.name}", new_document_path(model_param(@klass)), class: "button orange-button mobile-full" %>
 <% end %>
 
 <div class="section header">

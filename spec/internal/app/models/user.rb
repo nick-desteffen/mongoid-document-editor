@@ -12,4 +12,6 @@ class User
   has_many :addresses
   belongs_to  :primary_address, class_name: "Address"
 
+  validates_presence_of :email
+
 end

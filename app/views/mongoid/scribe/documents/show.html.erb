@@ -1,14 +1,15 @@
 <% content_for :navigation do %>
-  <%= link_to "All Documents", document_listing_path, class: "button orange-button mobile-full" %>
-  <%= link_to @klass.to_s.pluralize, documents_path(model_param(@klass)), class: "button orange-button mobile-full" %>
+  <%= link_to "All Documents", root_path, class: "button orange-button mobile-full" %>
+  <%= link_to "All #{@klass.to_s.pluralize}", documents_path(model_param(@klass)), class: "button orange-button mobile-full" %>
+  <%= link_to "New #{@klass.name}", new_document_path(model_param(@klass)), class: "button orange-button mobile-full" %>
+  <%= link_to "Edit #{relation_label(@document)}", edit_document_path(model_param(@klass), @document.id), class: "button orange-button mobile-full" %>
 <% end %>
 
 <div class="section header">
   <div class="container clear">
-    <h1 class='logo'>Viewing: <%= @document.id %></h1>
+    <h1 class='logo'>Viewing: <%= relation_label(@document) %></h1>
   </div>
 </div>
-<%= link_to "Edit", edit_document_path(model_param(@klass), @document.id), class: "button orange-button mobile-full" %>
 
 <table>
   <% @klass.fields.each do |attribute, meta| %>

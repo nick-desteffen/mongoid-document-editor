@@ -1,21 +1,20 @@
 <% content_for :navigation do %>
   <%= link_to "All Documents", root_path, class: "button orange-button mobile-full" %>
   <%= link_to "All #{@klass.to_s.pluralize}", documents_path(model_param(@klass)), class: "button orange-button mobile-full" %>
-  <%= link_to "View #{relation_label(@document)}", document_path(model_param(@klass), @document.id), class: "button orange-button mobile-full" %>
 <% end %>
 
 <div class="section header">
   <div class="container clear">
-    <h1 class='logo'>Editing: <%= relation_label(@document) %></h1>
+    <h1 class='logo'>New <%= @klass %></h1>
   </div>
 </div>
 
-<%= form_for @document, url: update_document_path(model_param(@klass), @document) do |form| %>
+<%= form_for @document, url: create_document_path(model_param(@klass)) do |form| %>
   <fieldset class='row'>
     <% Mongoid::Scribe.fields_for(@klass).each_pair do |name, config| %>
       <%= Mongoid::Scribe::Builders::Field.new(form, @klass, @document, name, config).field %>
     <% end %>
-    <%= link_to("Cancel", document_path(model_param(@klass), @document), class: "button orange-button mobile-full") %>
-    <%= form.submit("Update #{@klass}", class: "button orange-button mobile-full") %>
+    <%= link_to("Cancel", documents_path(model_param(@klass)), class: "button orange-button mobile-full") %>
+    <%= form.submit("Create #{@klass}", class: "button orange-button mobile-full") %>
   </fieldset>
 <% end %>

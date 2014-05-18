@@ -19,9 +19,11 @@ module Mongoid
 
       def update
         @document = @klass.find(params[:id])
-        @document.update_attributes(document_params)
-
-        redirect_to document_path(params[:type], @document.id)
+        if @document.update_attributes(document_params)
+          redirect_to document_path(params[:type], @document.id)
+        else
+          render :edit
+        end
       end
 
       def show
@@ -33,6 +35,19 @@ module Mongoid
         @document.destroy
 
         redirect_to documents_path(params[:type])
+      end
+
+      def new
+        @document = @klass.new
+      end
+
+      def create
+        @document = @klass.new(document_params)
+        if @document.save
+          redirect_to documents_path(params[:type])
+        else
+          render :new
+        end
       end
 
     private
