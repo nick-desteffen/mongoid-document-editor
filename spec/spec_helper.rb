@@ -20,7 +20,6 @@ RSpec.configure do |config|
 
   config.before(:each) do
     DatabaseCleaner.clean
-    Mongoid::IdentityMap.clear
   end
 
 end
