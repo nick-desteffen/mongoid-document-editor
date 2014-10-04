@@ -20,3 +20,8 @@ label span{
 .container table td.key{
   font-weight: bold;
 }
+
+textarea{
+  height: 250px;
+  width: 500px;
+}

@@ -19,7 +19,7 @@ module Mongoid
 
       def update
         @document = @klass.find(params[:id])
-        if @document.update_attributes(document_params)
+        if @document.update_attributes(cast_bson_attributes(document_params))
           redirect_to document_path(params[:type], @document.id)
         else
           render :edit
@@ -42,7 +42,7 @@ module Mongoid
       end
 
       def create
-        @document = @klass.new(document_params)
+        @document = @klass.new(cast_bson_attributes(document_params))
         if @document.save
           redirect_to documents_path(params[:type])
         else
@@ -58,6 +58,19 @@ module Mongoid
 
       def setup_klass
         @klass = params[:type].classify.constantize
+      end
+
+      def cast_bson_attributes(parameters)
+        bson_attributes = @klass.fields.select do |key, field|
+          [Object, BSON::ObjectId].include?(@klass.fields[key].type)
+        end
+
+        parameters.each do |key, value|
+          if bson_attributes.include?(key)
+            parameters[key] = BSON::ObjectId.from_string(value)
+          end
+        end
+        return parameters
       end
 
     end
